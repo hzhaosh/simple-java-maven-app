@@ -14,7 +14,9 @@ pipeline {
     stage('publish') {
       steps {
         sh '''cp target/*.jar /home/tomcat/demo
-ls -al'''
+java -jar /home/tomcat/demo/my-app-1.0-SNAPSHOT.jar
+
+'''
       }
     }
   }
