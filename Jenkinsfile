@@ -1,9 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('fetch') {
       steps {
         git(url: 'https://github.com/hzhaosh/simple-java-maven-app', branch: 'master')
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+    stage('publish') {
+      steps {
+        sh '''cp target/*.jar /home/tomcat/demo
+ls -al'''
       }
     }
   }
